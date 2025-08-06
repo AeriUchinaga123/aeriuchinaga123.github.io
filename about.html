@@ -19,25 +19,35 @@
       overflow-x: hidden;
       user-select: none;
     }
+    /* Optimized glowPulse animation for smoother performance */
     body::before {
       content: "";
       position: fixed;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
+      top: -30%;
+      left: -30%;
+      width: 160%;
+      height: 160%;
       background:
-        radial-gradient(circle at 30% 30%, #ff4655cc, transparent 60%),
-        radial-gradient(circle at 70% 80%, #ff829acc, transparent 60%);
-      animation: glowPulse 18s ease-in-out infinite;
+        radial-gradient(circle at 30% 30%, #ff4655cc, transparent 50%),
+        radial-gradient(circle at 70% 80%, #ff829acc, transparent 50%);
+      animation: glowPulse 12s ease-in-out infinite;
       z-index: -1;
-      opacity: 0.25;
+      opacity: 0.2;
       pointer-events: none;
-      filter: blur(80px);
+      filter: blur(40px);
+      will-change: opacity, transform;
+      transform: translateZ(0);
+      backface-visibility: hidden;
     }
     @keyframes glowPulse {
-      0%, 100% { opacity: 0.25; transform: scale(1) rotate(0deg); }
-      50% { opacity: 0.4; transform: scale(1.05) rotate(10deg); }
+      0%, 100% {
+        opacity: 0.2;
+        transform: scale(1) rotate(0deg);
+      }
+      50% {
+        opacity: 0.35;
+        transform: scale(1.03) rotate(7deg);
+      }
     }
 
     h1 {
@@ -296,28 +306,21 @@
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTbdRaP5_j9Gz0w5F1n-PH6Q29YNcRrYs_Kg&s" alt="Heart2Hearts">
             <a href="https://www.youtube.com/channel/UC7Q3HUnJA3nvjZR2JeMn2Cw" target="_blank" rel="noopener">Heart2Hearts</a>
           </li>
-          <li>
-            <img src="https://i.ytimg.com/vi/VanZGVOvxas/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDz3_MTgqkJuHV6zHtV-P_Pfv2yWA" alt="Wave to Earth">
-            <a href="https://www.youtube.com/channel/UCBJNpcJaUcVyw4LlqGRMpcQ" target="_blank" rel="noopener">Wave to Earth</a>
-          </li>
         </ul>
       </div>
     </div>
   </div>
 
-  <a href="index.html" class="back-link" aria-label="Back to Home">← Back to Home</a>
+  <a href="/index.html" class="back-link" aria-label="Back to Home Page">Back to Home</a>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    // Reveal overlay fade out on page load complete
+    window.addEventListener('load', () => {
       const reveal = document.querySelector('.reveal.entry');
-      if (!reveal) return;
-
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          // Fade out the overlay instead of display:none for smoother transition
-          reveal.classList.add('hidden');
-        }, 1700);
-      });
+      reveal.classList.add('hidden');
+      setTimeout(() => {
+        reveal.style.display = 'none';
+      }, 350);
     });
   </script>
 
