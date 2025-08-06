@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,35 +20,25 @@
       overflow-x: hidden;
       user-select: none;
     }
-    /* Optimized glowPulse animation for smoother performance */
     body::before {
       content: "";
       position: fixed;
-      top: -30%;
-      left: -30%;
-      width: 160%;
-      height: 160%;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
       background:
-        radial-gradient(circle at 30% 30%, #ff4655cc, transparent 50%),
-        radial-gradient(circle at 70% 80%, #ff829acc, transparent 50%);
-      animation: glowPulse 12s ease-in-out infinite;
+        radial-gradient(circle at 30% 30%, #ff4655cc, transparent 60%),
+        radial-gradient(circle at 70% 80%, #ff829acc, transparent 60%);
+      animation: glowPulse 18s ease-in-out infinite;
       z-index: -1;
-      opacity: 0.2;
+      opacity: 0.25;
       pointer-events: none;
-      filter: blur(40px);
-      will-change: opacity, transform;
-      transform: translateZ(0);
-      backface-visibility: hidden;
+      filter: blur(80px);
     }
     @keyframes glowPulse {
-      0%, 100% {
-        opacity: 0.2;
-        transform: scale(1) rotate(0deg);
-      }
-      50% {
-        opacity: 0.35;
-        transform: scale(1.03) rotate(7deg);
-      }
+      0%, 100% { opacity: 0.25; transform: scale(1) rotate(0deg); }
+      50% { opacity: 0.4; transform: scale(1.05) rotate(10deg); }
     }
 
     h1 {
@@ -152,86 +143,14 @@
       transition: background-color .3s ease, color .3s ease;
       user-select:none;
     }
-    a.back-link:hover { background-color:#ff4655; color:#1c1923; }
+    a.back-link:hover { background-color:#ff4655; color:#1c2733; }
 
     @media (max-width: 700px) {
       .agent-card { width: 180px; height: 280px; }
     }
-
-
-    /* ======== NEW: Reveal Overlay Styles ======= */
-    .reveal {
-      position: fixed;
-      inset: 0;
-      background: #0f1923;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      z-index: 9999;
-      pointer-events: auto;
-      transition: opacity 0.3s ease;
-      transform: translateZ(0); /* force GPU acceleration */
-    }
-    .reveal.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-    .reveal .title-card,
-    .reveal .slash,
-    .reveal .slash2 {
-      will-change: transform, opacity;
-    }
-
-    .title-card {
-      font-size: 3rem;
-      color: #ff4655;
-      text-shadow: 0 0 10px #ff4655aa;
-      font-weight: 700;
-      margin-bottom: 20px;
-      transform-origin: left center;
-      animation: title-slide 1.2s cubic-bezier(.38,.6,.46,1) forwards;
-    }
-    .slash {
-      width: 60px;
-      height: 10px;
-      background: #ff4655;
-      border-radius: 5px;
-      margin-bottom: 10px;
-      animation: slash-slide 1.2s cubic-bezier(.38,.6,.46,1) forwards;
-      animation-delay: 0.15s;
-    }
-    .slash2 {
-      width: 40px;
-      height: 10px;
-      background: #ff4655;
-      border-radius: 5px;
-      animation: slash2-slide 1.2s cubic-bezier(.38,.6,.46,1) forwards;
-      animation-delay: 0.25s;
-    }
-
-    @keyframes title-slide {
-      0% { transform: translateX(-100%); opacity: 0; }
-      100% { transform: translateX(0); opacity: 1; }
-    }
-    @keyframes slash-slide {
-      0% { transform: translateX(-100%); opacity: 0; }
-      100% { transform: translateX(0); opacity: 1; }
-    }
-    @keyframes slash2-slide {
-      0% { transform: translateX(-100%); opacity: 0; }
-      100% { transform: translateX(0); opacity: 1; }
-    }
   </style>
 </head>
 <body>
-
-  <!-- ===== NEW: Reveal Overlay ===== -->
-  <div class="reveal entry" aria-hidden="true" aria-label="Page loading animation">
-    <div class="title-card">About Me</div>
-    <div class="slash"></div>
-    <div class="slash2"></div>
-  </div>
 
   <h1>About Me</h1>
   <p class="lead">Hi! I’m Alexis — a Valorant enthusiast who enjoys music, anime/K-dramas.</p>
@@ -306,23 +225,16 @@
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTbdRaP5_j9Gz0w5F1n-PH6Q29YNcRrYs_Kg&s" alt="Heart2Hearts">
             <a href="https://www.youtube.com/channel/UC7Q3HUnJA3nvjZR2JeMn2Cw" target="_blank" rel="noopener">Heart2Hearts</a>
           </li>
+          <li>
+            <img src="https://i.ytimg.com/vi/VanZGVOvxas/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDz3_MTgqkJuHV6zHtV-P_Pfv2yWA" alt="Wave to Earth">
+            <a href="https://www.youtube.com/channel/UCBJNpcJaUcVyw4LlqGRMpcQ" target="_blank" rel="noopener">Wave to Earth</a>
+          </li>
         </ul>
       </div>
     </div>
   </div>
 
-  <a href="/index.html" class="back-link" aria-label="Back to Home Page">Back to Home</a>
-
-  <script>
-    // Reveal overlay fade out on page load complete
-    window.addEventListener('load', () => {
-      const reveal = document.querySelector('.reveal.entry');
-      reveal.classList.add('hidden');
-      setTimeout(() => {
-        reveal.style.display = 'none';
-      }, 350);
-    });
-  </script>
+  <a href="index.html" class="back-link" aria-label="Back to Home">← Back to Home</a>
 
 </body>
 </html>
