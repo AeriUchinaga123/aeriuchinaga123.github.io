@@ -142,151 +142,83 @@
       transition: background-color .3s ease, color .3s ease;
       user-select:none;
     }
-    a.back-link:hover { background-color:#ff4655; color:#1c2733; }
+    a.back-link:hover { background-color:#ff4655; color:#1c1923; }
 
     @media (max-width: 700px) {
       .agent-card { width: 180px; height: 280px; }
     }
 
 
-    /* --- Added CSS for entry/exit reveal --- */
-
-    :root {
-      --entry: 1700ms;
-      --exit: 1000ms;
-    }
+    /* ======== NEW: Reveal Overlay Styles ======= */
     .reveal {
-      pointer-events: none;
       position: fixed;
       inset: 0;
-      background-color: #0a111a;
-      z-index: 9999;
+      background: #0f1923;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
-      user-select: none;
+      flex-direction: column;
+      z-index: 9999;
+      pointer-events: auto;
+      transition: opacity 0.3s ease;
+      transform: translateZ(0); /* force GPU acceleration */
     }
-    .reveal .title-card {
-      color: #ff4655;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-      font-size: 4.25rem;
-      text-shadow: 0 0 20px #ff4655cc;
-      transform-origin: center;
-      z-index: 20;
+    .reveal.hidden {
+      opacity: 0;
       pointer-events: none;
-      user-select: none;
     }
+    .reveal .title-card,
     .reveal .slash,
     .reveal .slash2 {
-      position: absolute;
-      background-color: #ff4655;
-      opacity: 0.7;
-      width: 16vw;
-      height: 300vh;
-      top: -100vh;
-      right: 0;
-      transform-origin: bottom right;
-      filter: drop-shadow(0 0 10px #ff4655cc);
-      pointer-events: none;
-      user-select: none;
-      z-index: 10;
-    }
-    .reveal .slash2 {
-      right: auto;
-      left: 0;
-      opacity: 0.5;
-      filter: drop-shadow(0 0 5px #ff829a99);
-      width: 12vw;
-      height: 300vh;
-      top: -100vh;
-      transform-origin: bottom left;
-    }
-    /* Entry Animation */
-    .reveal.entry .title-card {
-      animation: reveal-title-entry var(--entry) ease forwards;
-    }
-    .reveal.entry .slash {
-      animation: reveal-slash-entry var(--entry) ease forwards;
-      animation-delay: 200ms;
-    }
-    .reveal.entry .slash2 {
-      animation: reveal-slash2-entry var(--entry) ease forwards;
-      animation-delay: 400ms;
-    }
-    /* Exit Animation */
-    .reveal.exit {
-      background-color: #0a111a;
-      animation: reveal-bg-exit var(--exit) ease forwards;
-    }
-    .reveal.exit .title-card {
-      animation: reveal-title-exit var(--exit) ease forwards;
-      animation-delay: 300ms;
-    }
-    .reveal.exit .slash {
-      animation: reveal-slash-exit var(--exit) ease forwards;
-      animation-delay: 100ms;
-    }
-    .reveal.exit .slash2 {
-      animation: reveal-slash2-exit var(--exit) ease forwards;
-      animation-delay: 200ms;
+      will-change: transform, opacity;
     }
 
-    /* Content fade-in on page load */
-    .content, h1, p.lead, .container, a.back-link {
-      opacity: 0;
-      transform: scale(0.95);
-      animation: content-fade-in 1s ease forwards;
-      animation-delay: var(--entry);
+    .title-card {
+      font-size: 3rem;
+      color: #ff4655;
+      text-shadow: 0 0 10px #ff4655aa;
+      font-weight: 700;
+      margin-bottom: 20px;
+      transform-origin: left center;
+      animation: title-slide 1.2s cubic-bezier(.38,.6,.46,1) forwards;
+    }
+    .slash {
+      width: 60px;
+      height: 10px;
+      background: #ff4655;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      animation: slash-slide 1.2s cubic-bezier(.38,.6,.46,1) forwards;
+      animation-delay: 0.15s;
+    }
+    .slash2 {
+      width: 40px;
+      height: 10px;
+      background: #ff4655;
+      border-radius: 5px;
+      animation: slash2-slide 1.2s cubic-bezier(.38,.6,.46,1) forwards;
+      animation-delay: 0.25s;
     }
 
-    /* Animations */
-    @keyframes reveal-title-entry {
-      0%   { transform: scale(4) translateY(-60vh) rotate(35deg); opacity: 0; }
-      50%  { transform: scale(1.3) translateY(0vh) rotate(10deg); opacity: 1; }
-      100% { transform: scale(1) translateY(0) rotate(0deg); opacity: 1; }
+    @keyframes title-slide {
+      0% { transform: translateX(-100%); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
     }
-    @keyframes reveal-slash-entry {
-      0%   { transform: scaleY(1) translateX(150vw) rotate(35deg); opacity: 0; }
-      70%  { opacity: 1; }
-      100% { transform: scaleY(3) translateX(0) rotate(0deg); opacity: 1; }
+    @keyframes slash-slide {
+      0% { transform: translateX(-100%); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
     }
-    @keyframes reveal-slash2-entry {
-      0%   { transform: scaleY(1) translateX(-150vw) rotate(35deg); opacity: 0; }
-      70%  { opacity: 1; }
-      100% { transform: scaleY(3) translateX(0) rotate(0deg); opacity: 1; }
-    }
-    @keyframes reveal-bg-exit {
-      0%   { opacity: 0; }
-      50%  { opacity: 1; }
-      100% { opacity: 1; }
-    }
-    @keyframes reveal-title-exit {
-      0%   { opacity: 1; transform: scale(1) translateY(0) rotate(0deg); }
-      100% { opacity: 0; transform: scale(0.8) translateY(10vh) rotate(-5deg); }
-    }
-    @keyframes reveal-slash-exit {
-      0%   { opacity: 1; transform: scaleY(3) translateX(0) rotate(0deg); }
-      100% { opacity: 0; transform: scaleY(1) translateX(150vw) rotate(35deg); }
-    }
-    @keyframes reveal-slash2-exit {
-      0%   { opacity: 1; transform: scaleY(3) translateX(0) rotate(0deg); }
-      100% { opacity: 0; transform: scaleY(1) translateX(-150vw) rotate(35deg); }
-    }
-    @keyframes content-fade-in {
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+    @keyframes slash2-slide {
+      0% { transform: translateX(-100%); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ENTRY REVEAL OVERLAY -->
-  <div class="reveal entry" aria-hidden="true">
-    <div class="title-card">About</div>
+  <!-- ===== NEW: Reveal Overlay ===== -->
+  <div class="reveal entry" aria-hidden="true" aria-label="Page loading animation">
+    <div class="title-card">About Me</div>
     <div class="slash"></div>
     <div class="slash2"></div>
   </div>
@@ -325,14 +257,14 @@
     </div>
   </div>
 
-  <!-- About Me  -->
-  <div class="container">
-    <h2 class="section-title">About Me</h2>
-    <p style="text-align:center; max-width: 700px; margin: 0 auto; color:#d1d9e6;">
-      Hello! I'm Alexis, a criminology student that loves playing Valorant who also loves music, anime, and K-dramas.
-      When I’m not gaming, I’m usually exploring new bands, watching the latest dramas, or at a school I value creativity, connection, and self-expression.
-    </p>
-  </div>
+<!-- About Me  -->
+<div class="container">
+  <h2 class="section-title">About Me</h2>
+  <p style="text-align:center; max-width: 700px; margin: 0 auto; color:#d1d9e6;">
+    Hello! I'm Alexis, a criminology student that loves playing Valorant who also loves music, anime, and K-dramas.
+    When I’m not gaming, I’m usually exploring new bands, watching the latest dramas, or at a school I value creativity, connection, and self-expression.
+  </p>
+</div>
 
   <!-- Favorite Band / K-Pop Band (moved from Hobbies) -->
   <div class="container">
@@ -358,57 +290,36 @@
           </li>
           <li>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS23PZwZD95RiXXlET-df1yh-AX6daqp9ASqA&s" alt="Twice">
-            <a href="https://www.youtube.com/channel/UChAnqc_AY5_I3Px5dig3X1Q" target="_blank" rel="noopener">Twice</a>
+            <a href="https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA" target="_blank" rel="noopener">Twice</a>
+          </li>
+          <li>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTbdRaP5_j9Gz0w5F1n-PH6Q29YNcRrYs_Kg&s" alt="Heart2Hearts">
+            <a href="https://www.youtube.com/channel/UC7Q3HUnJA3nvjZR2JeMn2Cw" target="_blank" rel="noopener">Heart2Hearts</a>
+          </li>
+          <li>
+            <img src="https://i.ytimg.com/vi/VanZGVOvxas/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDz3_MTgqkJuHV6zHtV-P_Pfv2yWA" alt="Wave to Earth">
+            <a href="https://www.youtube.com/channel/UCBJNpcJaUcVyw4LlqGRMpcQ" target="_blank" rel="noopener">Wave to Earth</a>
           </li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- Back link with exit transition -->
-  <a href="index.html" class="back-link" id="backLink">Back to Home</a>
+  <a href="index.html" class="back-link" aria-label="Back to Home">← Back to Home</a>
 
   <script>
-    // Wait for the entry animation to finish then remove the entry overlay
     document.addEventListener('DOMContentLoaded', () => {
       const reveal = document.querySelector('.reveal.entry');
       if (!reveal) return;
 
-      // Remove the entry overlay after animation ends (1.7s)
-      setTimeout(() => {
-        reveal.style.display = 'none';
-        // Fade in content is handled by CSS animation delayed by var(--entry)
-      }, 1700);
-    });
-
-    // Add exit animation on back link click
-    const backLink = document.getElementById('backLink');
-    backLink.addEventListener('click', (e) => {
-      e.preventDefault();
-
-      // Show exit overlay and run exit animation
-      let reveal = document.querySelector('.reveal');
-      if (!reveal) {
-        // If somehow missing, create it again
-        reveal = document.createElement('div');
-        reveal.classList.add('reveal');
-        document.body.appendChild(reveal);
-        reveal.innerHTML = `
-          <div class="title-card">About</div>
-          <div class="slash"></div>
-          <div class="slash2"></div>
-        `;
-      }
-
-      reveal.style.display = 'flex';
-      reveal.classList.remove('entry');
-      reveal.classList.add('exit');
-
-      // Wait for exit animation (1s) then navigate
-      setTimeout(() => {
-        window.location.href = backLink.href;
-      }, 1000);
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          // Fade out the overlay instead of display:none for smoother transition
+          reveal.classList.add('hidden');
+        }, 1700);
+      });
     });
   </script>
+
 </body>
 </html>
