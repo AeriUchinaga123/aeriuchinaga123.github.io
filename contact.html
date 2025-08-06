@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Me - Valorant Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+    body {
+      margin: 0;
+      padding: 30px;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #0a111a 0%, #1c2733 70%, #0f1923 100%);
+      color: #e0e6f1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      user-select: none;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background:
+        radial-gradient(circle at 30% 30%, #ff4655cc, transparent 60%),
+        radial-gradient(circle at 70% 80%, #ff829acc, transparent 60%);
+      animation: glowPulse 18s ease-in-out infinite;
+      z-index: -1;
+      opacity: 0.25;
+      pointer-events: none;
+      filter: blur(80px);
+    }
+    @keyframes glowPulse {
+      0%, 100% {
+        opacity: 0.25;
+        transform: scale(1) rotate(0deg);
+      }
+      50% {
+        opacity: 0.4;
+        transform: scale(1.05) rotate(10deg);
+      }
+    }
+    h1 {
+      color: #ff4655;
+      font-size: 3rem;
+      margin-bottom: 25px;
+      text-shadow: 0 0 20px #ff4655aa;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      background: #15212dcc;
+      border-radius: 20px;
+      padding: 30px 40px;
+      box-shadow: 0 0 40px #ff4655aa;
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      flex-wrap: wrap;
+      user-select: text;
+    }
+    .agent-card {
+      width: 220px;
+      height: 340px;
+      border-radius: 18px;
+      overflow: hidden;
+      background-color: #1c2733;
+      box-shadow: 0 0 25px #ff4655bb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      border: 3px solid transparent;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .agent-card:hover {
+      box-shadow: 0 0 45px #ff829aee;
+      border-color: #ff829a;
+    }
+    .agent-card img {
+      width: auto;
+      height: 95%;
+      object-fit: contain;
+      pointer-events: none;
+      user-select: none;
+      filter: drop-shadow(0 0 6px #ff4655cc);
+      transition: filter 0.3s ease;
+    }
+    .agent-card:hover img {
+      filter: drop-shadow(0 0 12px #ff829aee);
+    }
+    .content {
+      flex: 1 1 480px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #e0e6f1;
+      user-select: text;
+    }
+    a.back-link {
+      margin-top: 35px;
+      display: inline-block;
+      color: #ff4655;
+      font-weight: 700;
+      text-decoration: none;
+      border: 2px solid #ff4655;
+      padding: 14px 28px;
+      border-radius: 14px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+    a.back-link:hover {
+      background-color: #ff4655;
+      color: #1c2733;
+    }
+    @media (max-width: 700px) {
+      .container {
+        flex-direction: column;
+        gap: 30px;
+        padding: 25px;
+      }
+      .agent-card {
+        width: 180px;
+        height: 280px;
+      }
+      .content {
+        flex: 1 1 100%;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Contact Me</h1>
+
+  <div class="container">
+    <div class="agent-card" aria-label="Agent Iso Portrait">
+      <img src="https://pbs.twimg.com/media/F80E1PhWoAAQV4i.png" alt="Agent Iso" />
+    </div>
+    <div class="content">
+      <p>If you'd like to get in touch with me, feel free to reach out via email or social media.</p>
+      <p>Email: <a href="mailto:Alexis.lagria@gmail.com" style="color:#ff4655;">Alexis.lagria@gmail.com</a></p>
+      <p>Socials:</p>
+<ul>Facebook:Alexis Lagria Gagaoin</ul>
+<ul>Contact:09776409112</ul>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-link" aria-label="Back to Home">← Back to Home</a>
+
+</body>
+</html>

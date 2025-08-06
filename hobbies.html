@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Hobbies - Valorant Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+    body {
+      margin: 0;
+      padding: 30px;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #0a111a 0%, #1c2733 70%, #0f1923 100%);
+      color: #e0e6f1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      user-select: none;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background:
+        radial-gradient(circle at 30% 30%, #ff4655cc, transparent 60%),
+        radial-gradient(circle at 70% 80%, #ff829acc, transparent 60%);
+      animation: glowPulse 18s ease-in-out infinite;
+      z-index: -1;
+      opacity: 0.25;
+      pointer-events: none;
+      filter: blur(80px);
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.25; transform: scale(1) rotate(0deg); }
+      50% { opacity: 0.4; transform: scale(1.05) rotate(10deg); }
+    }
+    h1 {
+      color: #ff4655;
+      font-size: 3rem;
+      margin-bottom: 25px;
+      text-shadow: 0 0 20px #ff4655aa;
+      text-align: center;
+    }
+    h2.sub {
+      color: #ff829a;
+      font-size: 1.6rem;
+      margin: 0 0 10px;
+      text-shadow: 0 0 12px #ff829a99;
+    }
+    .container {
+      max-width: 900px;
+      background: #15212dcc;
+      border-radius: 20px;
+      padding: 30px 40px;
+      box-shadow: 0 0 40px #ff4655aa;
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      flex-wrap: wrap;
+      user-select: text;
+      margin-bottom: 40px;
+    }
+    .agent-card {
+      width: 220px;
+      height: 340px;
+      border-radius: 18px;
+      overflow: hidden;
+      background-color: #1c2733;
+      box-shadow: 0 0 25px #ff4655bb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      border: 3px solid transparent;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .agent-card:hover {
+      box-shadow: 0 0 45px #ff829aee;
+      border-color: #ff829a;
+    }
+    .agent-card img {
+      width: auto;
+      height: 95%;
+      object-fit: contain;
+      pointer-events: none;
+      user-select: none;
+      filter: drop-shadow(0 0 6px #ff4655cc);
+      transition: filter 0.3s ease;
+    }
+    .agent-card:hover img {
+      filter: drop-shadow(0 0 12px #ff829aee);
+    }
+    .content {
+      flex: 1 1 480px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #e0e6f1;
+      user-select: text;
+    }
+    .content ul {
+      margin: 8px 0 0 18px;
+    }
+    a.back-link {
+      margin-top: 35px;
+      display: inline-block;
+      color: #ff4655;
+      font-weight: 700;
+      text-decoration: none;
+      border: 2px solid #ff4655;
+      padding: 14px 28px;
+      border-radius: 14px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+    a.back-link:hover {
+      background-color: #ff4655;
+      color: #1c2733;
+    }
+    @media (max-width: 700px) {
+      .container {
+        flex-direction: column;
+        gap: 30px;
+        padding: 25px;
+      }
+      .agent-card {
+        width: 180px;
+        height: 280px;
+      }
+      .content {
+        flex: 1 1 100%;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My Hobbies</h1>
+
+  <!-- Existing: Gaming/General Hobbies -->
+  <div class="container">
+    <div class="agent-card" aria-label="Agent Yoru Portrait">
+      <img src="https://valorantinfo.gg/wp-content/uploads/2021/10/valorant-yoru-player-card.jpg" alt="Agent Yoru" />
+    </div>
+    <div class="content">
+      <p>I enjoy watching anime and K-Dramas in my free time, as well as listening to music to relax or get energized.</p>
+      <p>Playing games, especially Valorant, is one of my favorite hobbies. Here’s a playlist that keeps me motivated while gaming:</p>
+      <p><a href="https://www.youtube.com/watch?v=CnVVjLOGVoY&list=PLhfaVXy5oYGnekFHnPCfnPMrwgid0Ijbv" target="_blank" rel="noopener">My Gaming Playlist</a></p>
+    </div>
+  </div>
+
+  <!-- New: Exploring Music -->
+  <div class="container">
+    <div class="content">
+      <h2 class="sub">Exploring Music</h2>
+      <p>I love discovering new tracks—from K-Pop groups and indie bands to chill lo-fi for study and ranked queues. I rotate playlists, try B-sides, and save songs that match my mood while gaming.</p>
+    </div>
+  </div>
+
+  <!-- New: Collecting Skins -->
+  <div class="container">
+    <div class="content">
+      <h2 class="sub">Collecting Skins</h2>
+      <p>I enjoy collecting weapon skins and cosmetics—especially sets with clean sights, sharp audio, and satisfying finishers. I like building themed loadouts and swapping looks to fit the map or agent.</p>
+    </div>
+  </div>
+
+  <!-- New: Playing Games -->
+  <div class="container">
+    <div class="content">
+      <h2 class="sub">Playing Games</h2>
+      <p>Beyond casual matches, I practice aim, warm-ups, and utility lineups. I also watch highlights and pro plays to pick up timing and positioning tips.</p>
+    </div>
+  </div>
+
+  <!-- New: Variety of Games I Play (text list) -->
+  <div class="container">
+    <div class="content">
+      <h2 class="sub">Variety of Games I Play</h2>
+      <ul>
+        <li>LOL: Wild Rift</li>
+        <li>Mobile Legends</li>
+        <li>Valorant</li>
+        <li>CrossFire</li>
+        <li>Honor of Kings</li>
+        <li>Call of Duty Mobile</li>
+        <li>Punishing Gray Raven</li>
+      </ul>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-link">← Back to Home</a>
+
+</body>
+</html>

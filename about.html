@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Me</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+    body {
+      margin: 0;
+      padding: 30px;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #0a111a 0%, #1c2733 70%, #0f1923 100%);
+      color: #e0e6f1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      user-select: none;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background:
+        radial-gradient(circle at 30% 30%, #ff4655cc, transparent 60%),
+        radial-gradient(circle at 70% 80%, #ff829acc, transparent 60%);
+      animation: glowPulse 18s ease-in-out infinite;
+      z-index: -1;
+      opacity: 0.25;
+      pointer-events: none;
+      filter: blur(80px);
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.25; transform: scale(1) rotate(0deg); }
+      50% { opacity: 0.4; transform: scale(1.05) rotate(10deg); }
+    }
+
+    h1 {
+      color: #ff4655;
+      font-size: 3rem;
+      margin-bottom: 10px;
+      text-shadow: 0 0 20px #ff4655aa;
+      text-align: center;
+      font-weight: 700;
+    }
+    p.lead {
+      margin: 0 0 25px;
+      text-align: center;
+      color: #cfd6e4;
+      max-width: 900px;
+    }
+
+    /* Panel container reused across sections */
+    .container {
+      max-width: 900px;
+      background: #15212dcc;
+      border-radius: 20px;
+      padding: 30px 40px;
+      box-shadow: 0 0 40px #ff4655aa;
+      user-select: text;
+      margin-bottom: 40px;
+    }
+    h2.section-title {
+      color: #ff829a;
+      font-size: 2rem;
+      margin: 0 0 20px;
+      text-shadow: 0 0 15px #ff829a99;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    /* Favorite Things grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background:#1c2733;
+      border-radius:15px;
+      padding:15px;
+      box-shadow:0 0 15px #ff4655aa;
+      text-align:center;
+      border:3px solid transparent;
+      transition: box-shadow .25s ease, border-color .25s ease, transform .25s ease;
+    }
+    .card:hover { box-shadow:0 0 28px #ff829aee; border-color:#ff829a; transform:translateY(-2px) }
+    .card img {
+      width:100%;
+      height:auto;
+      border-radius:10px;
+      margin-bottom:10px;
+      filter: drop-shadow(0 0 6px #ff4655cc);
+    }
+    .card h3 { color:#ff829a; margin:0 0 6px; font-size:1.05rem }
+    .card p { margin:0; color:#e0e6f1; font-size:.95rem }
+    .card a { color:#ff4655; text-decoration:none; font-weight:700 }
+    .card a:hover { color:#ff829a; text-decoration:underline }
+
+    /* Bands section (image left + list right) */
+    .band-flex {
+      display:flex; gap:50px; align-items:center; flex-wrap:wrap;
+    }
+    .agent-card {
+      width: 220px; height: 340px;
+      border-radius: 18px; overflow: hidden; flex-shrink: 0;
+      background-color: #1c2733;
+      box-shadow: 0 0 25px #ff4655bb;
+      border: 3px solid transparent;
+      display:flex; align-items:center; justify-content:center;
+      transition: box-shadow .3s ease, border-color .3s ease;
+    }
+    .agent-card:hover { box-shadow: 0 0 45px #ff829aee; border-color:#ff829a; }
+    .agent-card img {
+      width:auto; height:95%; object-fit:contain; pointer-events:none; user-select:none;
+      filter: drop-shadow(0 0 6px #ff4655cc);
+      transition: filter .3s ease;
+    }
+    .agent-card:hover img { filter: drop-shadow(0 0 12px #ff829aee); }
+
+    .links-list { list-style:none; padding:0; margin:0; }
+    .links-list li {
+      margin-bottom:12px; display:flex; align-items:center; gap:12px;
+    }
+    .links-list img {
+      width:40px; height:40px; object-fit:cover; border-radius:8px;
+      box-shadow:0 0 8px #ff4655aa;
+    }
+    .links-list a {
+      color:#ff4655; font-weight:bold; text-decoration:none;
+    }
+    .links-list a:hover { text-decoration:underline; color:#ff829a; }
+
+    a.back-link {
+      display:inline-block; color:#ff4655; font-weight:700; text-decoration:none;
+      border:2px solid #ff4655; padding:14px 28px; border-radius:14px;
+      transition: background-color .3s ease, color .3s ease;
+      user-select:none;
+    }
+    a.back-link:hover { background-color:#ff4655; color:#1c2733; }
+
+    @media (max-width: 700px) {
+      .agent-card { width: 180px; height: 280px; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>About Me</h1>
+  <p class="lead">Hi! I’m Alexis — a Valorant enthusiast who enjoys music, anime/K-dramas.</p>
+
+  <!-- Favorite Things -->
+  <div class="container">
+    <h2 class="section-title">Favorite Things</h2>
+    <div class="grid">
+      <!-- Favorite Agent -->
+      <div class="card">
+        <img src="https://static.wikia.nocookie.net/valorant-lore/images/c/c9/VALORANT_Chamber_Card_-_Large.png" alt="Chamber">
+        <h3>Favorite Valorant Agent</h3>
+        <p>Chamber — because of his kit.</p>
+      </div>
+
+      <!-- Favorite Food / Drink -->
+      <div class="card">
+        <h3>Favorite Food / Drink</h3>
+        <p>Miki Bihon, Pork Steak.</p>
+      </div>
+
+      <!-- Favorite Music (link to Hobbies if you want) -->
+      <div class="card">
+        <h3>Favorite Music Genre / Band</h3>
+        <p>R&B, POP ROCK, Old Rock.</p>
+      </div>
+
+      <!-- Favorite Quote -->
+      <div class="card">
+        <h3>Favorite Quote</h3>
+        <p style="font-style:italic;">"You want to play Lets Play- Chamber".</p>
+      </div>
+    </div>
+  </div>
+
+<!-- About Me  -->
+<div class="container">
+  <h2 class="section-title">About Me</h2>
+  <p style="text-align:center; max-width: 700px; margin: 0 auto; color:#d1d9e6;">
+    Hello! I'm Alexis, a criminology student that loves playing Valorant who also loves music, anime, and K-dramas.
+    When I’m not gaming, I’m usually exploring new bands, watching the latest dramas, or at a school I value creativity, connection, and self-expression.
+  </p>
+</div>
+
+  <!-- Favorite Band / K-Pop Band (moved from Hobbies) -->
+  <div class="container">
+    <h2 class="section-title">My Favorite Band / K-Pop Band</h2>
+    <div class="band-flex">
+      <div class="agent-card" aria-label="Favorite Band Image">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUC4AtN9sHDTwWycIT8tQC83sI74T8FiE3xw&s" alt="Favorite Bands Collage" />
+      </div>
+      <div class="content" style="flex:1 1 480px;">
+        <p>Music plays a huge part in my life. Here are some of my favorite K-Pop groups and bands.:</p>
+        <ul class="links-list">
+          <li>
+            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTp9gDBiFa0bk1Sr3lmnwgqXdEcU3x5nDi5dTxXhFQTiq6dg36rYGKVeBECF1SF2IUSybUFholVgT4GrtLtPJ6LevNflUQAmzwbrIUVAo1l" alt="New Jeans">
+            <a href="https://www.youtube.com/channel/UCMki_UkHb4qSc0qyEcOHHJw" target="_blank" rel="noopener">New Jeans</a>
+          </li>
+          <li>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCg6UalLjDtzKZAbH39k7JTHWTfD-GODfRWA&s" alt="Aespa">
+            <a href="https://www.youtube.com/channel/UC9GtSLeksfK4yuJ_g1lgQbg" target="_blank" rel="noopener">Aespa</a>
+          </li>
+          <li>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrQyT2TsM4j_nkC-X0hjaAZmjUpR9Meffx0A&s" alt="Oasis">
+            <a href="https://www.youtube.com/channel/UCUDVBtnOQi4c7E8jebpjc9Q" target="_blank" rel="noopener">Oasis</a>
+          </li>
+          <li>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS23PZwZD95RiXXlET-df1yh-AX6daqp9ASqA&s" alt="Twice">
+            <a href="https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA" target="_blank" rel="noopener">Twice</a>
+          </li>
+          <li>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTbdRaP5_j9Gz0w5F1n-PH6Q29YNcRrYs_Kg&s" alt="Heart2Hearts">
+            <a href="https://www.youtube.com/channel/UC7Q3HUnJA3nvjZR2JeMn2Cw" target="_blank" rel="noopener">Heart2Hearts</a>
+          </li>
+          <li>
+            <img src="https://i.ytimg.com/vi/VanZGVOvxas/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDz3_MTgqkJuHV6zHtV-P_Pfv2yWA" alt="Wave to Earth">
+            <a href="https://www.youtube.com/channel/UCBJNpcJaUcVyw4LlqGRMpcQ" target="_blank" rel="noopener">Wave to Earth</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-link" aria-label="Back to Home">← Back to Home</a>
+
+</body>
+</html>
