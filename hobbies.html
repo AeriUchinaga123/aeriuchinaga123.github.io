@@ -52,6 +52,8 @@
       margin: 0 0 10px;
       text-shadow: 0 0 12px #ff829a99;
     }
+
+    /* Updated container with hover glow and lift */
     .container {
       max-width: 900px;
       background: #15212dcc;
@@ -64,7 +66,16 @@
       flex-wrap: wrap;
       user-select: text;
       margin-bottom: 40px;
+      border: 3px solid transparent;
+      transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
     }
+    .container:hover {
+      box-shadow: 0 0 50px #ff829aee;
+      border-color: #ff829a;
+      transform: translateY(-2px);
+    }
+
+    /* Updated agent-card with matching transition and lift */
     .agent-card {
       width: 220px;
       height: 340px;
@@ -77,11 +88,12 @@
       align-items: center;
       flex-shrink: 0;
       border: 3px solid transparent;
-      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+      transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
     }
     .agent-card:hover {
       box-shadow: 0 0 45px #ff829aee;
       border-color: #ff829a;
+      transform: translateY(-2px);
     }
     .agent-card img {
       width: auto;
@@ -95,6 +107,7 @@
     .agent-card:hover img {
       filter: drop-shadow(0 0 12px #ff829aee);
     }
+
     .content {
       flex: 1 1 480px;
       font-size: 1.2rem;
