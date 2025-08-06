@@ -124,6 +124,24 @@
     repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px, transparent 1px 2px);
     opacity:0; animation:revealVignette var(--entry) ease-in-out forwards; animation-delay:.05s}
   @keyframes revealVignette{40%{opacity:1}100%{opacity:0}}
+
+  /* ===== Exit animation for slashes (added) ===== */
+  .reveal.exit .slash {
+    animation: exitSweep var(--exit) cubic-bezier(.2,.65,.25,1) forwards;
+  }
+  .reveal.exit .slash2 {
+    animation: exitSweep2 calc(var(--exit)*.94) cubic-bezier(.2,.65,.25,1) forwards;
+  }
+
+  @keyframes exitSweep {
+    0% { transform: skewX(-18deg) translateX(120%); }
+    100% { transform: skewX(-18deg) translateX(0); }
+  }
+
+  @keyframes exitSweep2 {
+    0% { transform: skewX(-18deg) translateX(110%); }
+    100% { transform: skewX(-18deg) translateX(-5%); }
+  }
 </style>
 </head>
 <body>
